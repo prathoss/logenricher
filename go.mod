@@ -1,3 +1,3 @@
-module github.com/prathoss/logextractor
+module github.com/prathoss/logenricher
 
 go 1.22

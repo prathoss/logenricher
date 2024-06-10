@@ -1,6 +1,6 @@
-# logextractor
+# logenricher
 
-logextractor is tiny package enabling `log/slog` logs enrichment with data
+logenricher is tiny package enabling `log/slog` logs enrichment with data
 from context.
 
 Use cases:
@@ -17,7 +17,7 @@ import (
     "log/slog"
 
     "github.com/google/uuid"
-    "github.com/prathoss/logextractor"
+    "github.com/prathoss/logenricher"
 )
 
 func CorrelationIDExtractor(ctx context.Context) []slog.Attr {
@@ -26,12 +26,12 @@ func CorrelationIDExtractor(ctx context.Context) []slog.Attr {
 }
 
 func main() {
-    slog.SetDefault(slog.New(&logextractor.SlogHandlerWrapper{
+    slog.SetDefault(slog.New(&logenricher.SlogHandlerWrapper{
         Handler: slog.NewTextHandler(
             os.Stdout,
             &slog.HandlerOptions{},
         ),
-        extractors: []logextractor.Extractor{
+        Extractors: []logenricher.Extractor{
             CorrelationIDExtractor,
         },
     }))

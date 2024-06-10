@@ -1,4 +1,6 @@
-package logextractor
+// Package logenricher is tiny package enabling `log/slog` logs enrichment with data
+// from context. Start with SlogHandlerWrapper.
+package logenricher
 
 import (
 	"context"
@@ -19,12 +21,12 @@ type Extractor func(ctx context.Context) []slog.Attr
 //		return []slog.Attr{slog.String("correlation_id", correlationID.String())}
 //	}
 //
-//	slog.SetDefault(slog.New(&logextractor.SlogHandlerWrapper{
+//	slog.SetDefault(slog.New(&logenricher.SlogHandlerWrapper{
 //		Handler: slog.NewTextHandler(
 //			os.Stdout,
 //			&slog.HandlerOptions{},
 //		),
-//		Extractors: []logextractor.Extractor{
+//		Extractors: []logenricher.Extractor{
 //			CorrelationIDExtractor,
 //		},
 //	}))
